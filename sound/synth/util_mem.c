@@ -88,6 +88,7 @@ __snd_util_mem_alloc(struct snd_util_memhdr *hdr, int size)
 
 	/* look for empty block */
 	prev_offset = 0;
+	prev_offset_lock_block = 1024;
 	list_for_each(p, &hdr->block) {
 		blk = get_memblk(p);
 		if (blk->offset - prev_offset >= units)
